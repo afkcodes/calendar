@@ -13,7 +13,7 @@ interface dateType {
   date: number;
   type: string;
   dateString: string;
-  epochDateString: string;
+  epochDate: number;
 }
 
 const Dates: React.FC<DatesPropsType> = ({
@@ -29,10 +29,10 @@ const Dates: React.FC<DatesPropsType> = ({
       {calenderDates.map((date: dateType) => (
         <Cell
           date={date.date}
-          key={`DATES_CELL_${Math.random()}`}
+          key={`DATES_CELL_${date.epochDate}`}
           type={date.type}
           dateString={date.dateString}
-          epochDateString={date.epochDateString}
+          epochDate={date.epochDate}
           month={month}
           year={year}
           onDateSelect={onDateSelect}

@@ -11,13 +11,13 @@ function App() {
     },
     type: '',
     dateString: '',
-    epochDateString: 0,
+    epochDate: 0,
   });
 
   return (
-    <div className='flex flex-col bg-white justify-center items-center h-screen'>
+    <div className='flex flex-col bg-white  items-center h-screen pt-12'>
       <Calender onDateSelect={setSelectedDate} selectedDate={selectedDate} />
-      <div className='mt-20'>{JSON.stringify(selectedDate?.date)}</div>
+      <pre className='mt-20'>{JSON.stringify(selectedDate, null, 2)}</pre>
     </div>
   );
 }

@@ -5,6 +5,6 @@ export interface DateType {
     year: number;
   };
   type: string;
-  epochDateString: number;
+  epochDate: number;
   dateString: string;
 }

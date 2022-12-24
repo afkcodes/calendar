@@ -22,7 +22,9 @@ const Years: React.FC<YearsPropType> = ({ year, setYear }) => {
           hover:bg-[#D80000] hover:text-white rounded-full 
           cursor-pointer transition-all duration-200 ease-in-out'
           tabIndex={0}
-          onClick={() => handleYearChange('previous')}>
+          onClick={() => handleYearChange('previous')}
+          name='previous year'
+          aria-label='previous year'>
           <FiChevronLeft size={20} />
         </button>
         <p className='font-semibold text-base text-gray-600'>{year}</p>
@@ -31,7 +33,9 @@ const Years: React.FC<YearsPropType> = ({ year, setYear }) => {
           hover:bg-[#D80000] hover:text-white rounded-full
           cursor-pointer transition-all duration-200 ease-in-out'
           tabIndex={0}
-          onClick={() => handleYearChange('next')}>
+          onClick={() => handleYearChange('next')}
+          name='next year'
+          aria-label='next year'>
           <FiChevronRight size={20} />
         </button>
       </div>
