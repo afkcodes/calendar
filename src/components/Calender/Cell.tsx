@@ -52,7 +52,6 @@ const Cell: React.FC<CellPropsType> = ({
   return (
     <li>
       <button
-        key={`DATES_${Math.random()}`}
         onClick={handleDateSelect}
         className={`flex justify-center items-center w-9 h-9 cursor-pointer 
         rounded-full text-gray-600 hover:bg-[#D80000] hover:text-white 
@@ -83,9 +82,7 @@ const Cell: React.FC<CellPropsType> = ({
 
         `}
         aria-disabled={isPreviousOrNext}>
-        <p key={`DATES_${Math.random()}`} className='font-semibold text-base'>
-          {date}
-        </p>
+        <p className='font-semibold text-base'>{date}</p>
       </button>
     </li>
   );
