@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { getInitialCalenderDate } from '../../utils/helper.calender';
 import { DateType } from './types';
 
@@ -11,6 +11,8 @@ interface CellPropsType {
   epochDate: number;
   selectedDate: DateType;
   onDateSelect: Function;
+  isHoliday?: boolean;
+  holidayReason?: string;
 }
 
 const Cell: React.FC<CellPropsType> = ({
@@ -18,6 +20,8 @@ const Cell: React.FC<CellPropsType> = ({
   month,
   year,
   type,
+  isHoliday,
+  holidayReason,
   dateString,
   epochDate,
   selectedDate,
@@ -37,8 +41,10 @@ const Cell: React.FC<CellPropsType> = ({
       onDateSelect({
         date: { date, month, year },
         type,
-        dateString,
         epochDate,
+        dateString,
+        isHoliday,
+        holidayReason,
       });
     }
   };
@@ -51,6 +57,12 @@ const Cell: React.FC<CellPropsType> = ({
         className={`flex justify-center items-center w-9 h-9 cursor-pointer 
         rounded-full text-gray-600 hover:bg-[#D80000] hover:text-white 
         transition-all duration-250 ease-in-out
+
+        ${
+          isHoliday && !isPreviousOrNext && !isSelectedDate
+            ? 'bg-yellow-500 text-gray-700'
+            : ''
+        }
 
         ${
           isToday
@@ -68,7 +80,6 @@ const Cell: React.FC<CellPropsType> = ({
         }
 
         ${isSelectedDate && !isPreviousOrNext ? 'bg-[#d80000] text-white' : ''}
-        
 
         `}
         aria-disabled={isPreviousOrNext}>

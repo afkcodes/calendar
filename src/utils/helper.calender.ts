@@ -1,3 +1,10 @@
+import { holidays } from '../components/Calender/holidays';
+import {
+  BaseDateType,
+  DateCategoryType,
+  HolidaysType,
+} from '../components/Calender/types';
+
 export const weekDays = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 export const months: any = {
   1: 'JANUARY',
@@ -30,9 +37,13 @@ export const getInitialCalenderDate = () => {
   return { date, year, month };
 };
 
-export const createDates = (month: number, year: number, type = 'current') => {
+export const createDates = (
+  month: number,
+  year: number,
+  type: DateCategoryType = 'current'
+) => {
   const datesLength = new Date(year, month, 0).getDate();
-  const dates: any = [];
+  const dates: BaseDateType[] = [];
   const initialDate = getInitialCalenderDate();
 
   for (let date = 1; date <= datesLength; date++) {
@@ -46,6 +57,8 @@ export const createDates = (month: number, year: number, type = 'current') => {
         type: 'today',
         dateString: new Date(`${year}-${month}-${date}`).toDateString(),
         epochDate: new Date(`${year}-${month}-${date}`).getTime(),
+        isHoliday: false,
+        reason: '',
       });
     } else {
       dates.push({
@@ -53,9 +66,12 @@ export const createDates = (month: number, year: number, type = 'current') => {
         type: type,
         dateString: new Date(`${year}-${month}-${date}`).toDateString(),
         epochDate: new Date(`${year}-${month}-${date}`).getTime(),
+        isHoliday: false,
+        reason: '',
       });
     }
   }
+
   return dates;
 };
 
@@ -67,25 +83,59 @@ const createPreviousDates = (month: number, year: number) => {
 
 const createNextDates = (month: number, year: number) => {
   const actualYear = month === 12 ? year + 1 : year;
-  const dates = createDates(month, actualYear, 'next');
+  const actualMonth = month === 12 ? 1 : month;
+  const dates = createDates(actualMonth, actualYear, 'next');
   return dates;
 };
 
-export const getDatesWithOffset = (month: number, year: number) => {
+const getHolidays = (month: number, year: number) => {
+  const holidaysList: number[] = [];
+  const holidaysDetailsList = holidays.filter(
+    (holiday: HolidaysType) => holiday.month === month && holiday.year === year
+  );
+
+  holidays.forEach((holiday: HolidaysType) => {
+    if (holiday.month === month && holiday.year === year) {
+      holidaysList.push(holiday.date);
+    }
+  });
+
+  return { holidaysList, holidaysDetailsList };
+};
+
+export const getDatesWithOffset = (
+  month: number,
+  year: number,
+  includesHolidays = false
+) => {
   const firstDay = getFirstDay(month, year);
   const dates = createDates(month, year);
   let lastDay = getLastDay(month, year, dates[dates.length - 1].date);
   const lastMonthDates = createPreviousDates(month, year);
   const nextMonthDates = createNextDates(month, year);
 
-  dates.forEach((el: number, idx: number) => {
+  dates.forEach((el: BaseDateType, idx: number) => {
     if (idx < firstDay) {
       dates.unshift(lastMonthDates[lastMonthDates.length - (idx + 1)]);
     }
+
     if (lastDay < 6) {
       dates.push(nextMonthDates[idx]);
       lastDay++;
     }
   });
+
+  if (includesHolidays) {
+    dates.forEach((date: BaseDateType) => {
+      const { holidaysList, holidaysDetailsList } = getHolidays(month, year);
+      if (holidaysList.length && holidaysList.includes(date.date)) {
+        date['isHoliday'] = true;
+        date['reason'] = holidaysDetailsList?.filter(
+          (holiday: HolidaysType) => holiday?.date === date?.date
+        )[0]?.reason;
+      }
+    });
+  }
+
   return dates;
 };

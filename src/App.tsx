@@ -9,9 +9,11 @@ function App() {
       month: 0,
       year: 0,
     },
+    epochDate: 0,
     type: '',
     dateString: '',
-    epochDate: 0,
+    isHoliday: false,
+    reason: '',
   });
 
   return (
