@@ -81,7 +81,8 @@ const Cell: React.FC<CellPropsType> = ({
         ${isSelectedDate && !isPreviousOrNext ? 'bg-[#d80000] text-white' : ''}
 
         `}
-        aria-disabled={isPreviousOrNext}>
+        aria-disabled={isPreviousOrNext}
+        disabled={isPreviousOrNext}>
         <p className='font-semibold text-base'>{date}</p>
       </button>
     </li>
