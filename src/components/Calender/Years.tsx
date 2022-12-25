@@ -20,7 +20,8 @@ const Years: React.FC<YearsPropType> = ({ year, setYear }) => {
         <button
           className='h-6 w-6 flex items-center justify-center
           hover:bg-[#D80000] hover:text-white rounded-full 
-          cursor-pointer transition-all duration-200 ease-in-out'
+          cursor-pointer transition-all duration-200 ease-in-out
+          outline-[#D80000]'
           tabIndex={0}
           onClick={() => handleYearChange('previous')}
           name='previous year'
@@ -31,7 +32,8 @@ const Years: React.FC<YearsPropType> = ({ year, setYear }) => {
         <button
           className='h-6 w-6 flex items-center justify-center
           hover:bg-[#D80000] hover:text-white rounded-full
-          cursor-pointer transition-all duration-200 ease-in-out'
+          cursor-pointer transition-all duration-200 ease-in-out
+          outline-[#D80000]'
           tabIndex={0}
           onClick={() => handleYearChange('next')}
           name='next year'

@@ -37,7 +37,8 @@ const Months: React.FC<MonthsPropType> = ({
         <button
           className='h-6 w-6 flex items-center justify-center
           hover:bg-[#D80000] hover:text-white rounded-full 
-          cursor-pointer transition-all duration-200 ease-in-out'
+          cursor-pointer transition-all duration-200 ease-in-out
+          outline-[#D80000]'
           tabIndex={0}
           onClick={() => handleMonthChange('previous')}
           name='previous month'
@@ -48,7 +49,8 @@ const Months: React.FC<MonthsPropType> = ({
         <button
           className='h-6 w-6 flex items-center justify-center
           hover:bg-[#D80000] hover:text-white rounded-full 
-          cursor-pointer transition-all duration-200 ease-in-out'
+          cursor-pointer transition-all duration-200 ease-in-out
+           outline-[#D80000]'
           tabIndex={0}
           onClick={() => handleMonthChange('next')}
           name='next month'
