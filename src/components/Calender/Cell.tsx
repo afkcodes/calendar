@@ -8,7 +8,7 @@ interface CellPropsType {
   year: number;
   type: string;
   dateString: string;
-  epochDateString: string;
+  epochDate: number;
   selectedDate: DateType;
   onDateSelect: Function;
 }
@@ -19,7 +19,7 @@ const Cell: React.FC<CellPropsType> = ({
   year,
   type,
   dateString,
-  epochDateString,
+  epochDate,
   selectedDate,
   onDateSelect,
 }) => {
@@ -37,15 +37,16 @@ const Cell: React.FC<CellPropsType> = ({
       date: { date, month, year },
       type,
       dateString,
-      epochDateString,
+      epochDate,
     });
   };
 
   return (
-    <li
-      key={`DATES_${Math.random()}`}
-      onClick={handleDateSelect}
-      className={`flex justify-center items-center w-9 h-9 cursor-pointer 
+    <li>
+      <button
+        key={`DATES_${Math.random()}`}
+        onClick={handleDateSelect}
+        className={`flex justify-center items-center w-9 h-9 cursor-pointer 
         rounded-full text-gray-600 hover:bg-[#D80000] hover:text-white 
         transition-all duration-250 ease-in-out
 
@@ -67,10 +68,11 @@ const Cell: React.FC<CellPropsType> = ({
         ${isSelectedDate && !isPreviousOrNext ? 'bg-[#d80000] text-white' : ''}
 
         `}
-      tabIndex={!isPreviousOrNext ? 0 : undefined}>
-      <p key={`DATES_${Math.random()}`} className='font-semibold text-base'>
-        {date}
-      </p>
+        aria-disabled={isPreviousOrNext}>
+        <p key={`DATES_${Math.random()}`} className='font-semibold text-base'>
+          {date}
+        </p>
+      </button>
     </li>
   );
 };

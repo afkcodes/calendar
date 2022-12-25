@@ -45,14 +45,14 @@ export const createDates = (month: number, year: number, type = 'current') => {
         date: date,
         type: 'today',
         dateString: new Date(`${year}-${month}-${date}`).toDateString(),
-        epochDateString: new Date(`${year}-${month}-${date}`).getTime(),
+        epochDate: new Date(`${year}-${month}-${date}`).getTime(),
       });
     } else {
       dates.push({
         date: date,
         type: type,
         dateString: new Date(`${year}-${month}-${date}`).toDateString(),
-        epochDateString: new Date(`${year}-${month}-${date}`).getTime(),
+        epochDate: new Date(`${year}-${month}-${date}`).getTime(),
       });
     }
   }

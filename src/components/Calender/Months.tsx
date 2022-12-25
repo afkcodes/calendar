@@ -39,7 +39,9 @@ const Months: React.FC<MonthsPropType> = ({
           hover:bg-[#D80000] hover:text-white rounded-full 
           cursor-pointer transition-all duration-200 ease-in-out'
           tabIndex={0}
-          onClick={() => handleMonthChange('previous')}>
+          onClick={() => handleMonthChange('previous')}
+          name='previous month'
+          aria-label='previous month'>
           <FiChevronLeft size={20} />
         </button>
         <p className='font-semibold text-base text-gray-600'>{months[month]}</p>
@@ -48,7 +50,9 @@ const Months: React.FC<MonthsPropType> = ({
           hover:bg-[#D80000] hover:text-white rounded-full 
           cursor-pointer transition-all duration-200 ease-in-out'
           tabIndex={0}
-          onClick={() => handleMonthChange('next')}>
+          onClick={() => handleMonthChange('next')}
+          name='next month'
+          aria-label='next month'>
           <FiChevronRight size={20} />
         </button>
       </div>
