@@ -1,4 +1,4 @@
-import { HolidaysType } from './types';
+import { HolidaysType } from '../types/types';
 
 export const holidays: HolidaysType[] = [
   {

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Calender from './components/Calender/Calender';
-import { DateType } from './components/Calender/types';
+import { DateType } from './components/Calender/types/types';
 
 function App() {
   const [selectedDate, setSelectedDate] = useState<DateType>({

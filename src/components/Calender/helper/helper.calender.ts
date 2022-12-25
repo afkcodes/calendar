@@ -1,9 +1,5 @@
-import { holidays } from '../components/Calender/holidays';
-import {
-  BaseDateType,
-  DateCategoryType,
-  HolidaysType,
-} from '../components/Calender/types';
+import { holidays } from '../holidays/holidays';
+import { BaseDateType, DateCategoryType, HolidaysType } from '../types/types';
 
 export const weekDays = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 export const months: any = {

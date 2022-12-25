@@ -1,5 +1,5 @@
 import React from 'react';
-import { weekDays } from '../../utils/helper.calender';
+import { weekDays } from './helper/helper.calender';
 
 const Weeks = () => {
   return (

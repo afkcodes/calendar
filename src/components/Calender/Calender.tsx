@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { getInitialCalenderDate } from '../../utils/helper.calender';
+import { getInitialCalenderDate } from './helper/helper.calender';
 import Dates from './Dates';
 import Months from './Months';
-import { DateType } from './types';
+import { DateType } from './types/types';
 import Weeks from './Weeks';
 import Years from './Years';
 

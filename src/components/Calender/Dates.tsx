@@ -1,6 +1,6 @@
-import { getDatesWithOffset } from '../../utils/helper.calender';
+import { getDatesWithOffset } from './helper/helper.calender';
 import Cell from './Cell';
-import { BaseDateType, DateType } from './types';
+import { BaseDateType, DateType } from './types/types';
 
 interface DatesPropsType {
   month: number;
