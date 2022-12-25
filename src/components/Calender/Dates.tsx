@@ -26,10 +26,10 @@ const Dates: React.FC<DatesPropsType> = ({
 
   return (
     <ul className='grid grid-cols-7 w-full gap-x-5 gap-y-3 pt-4'>
-      {calenderDates.map((date: dateType) => (
+      {calenderDates.map((date: dateType, idx: number) => (
         <Cell
           date={date.date}
-          key={`DATES_CELL_${date.epochDate}`}
+          key={`DATES_CELL_${date.epochDate}_${idx}`}
           type={date.type}
           dateString={date.dateString}
           epochDate={date.epochDate}
