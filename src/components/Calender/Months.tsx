@@ -1,5 +1,5 @@
 import React from 'react';
-import { months } from '../../utils/helper.calender';
+import { months } from './helper/helper.calender';
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
 
 interface MonthsPropType {

@@ -1,6 +1,6 @@
 import React from 'react';
-import { getInitialCalenderDate } from '../../utils/helper.calender';
-import { DateType } from './types';
+import { getInitialCalenderDate } from './helper/helper.calender';
+import { DateType } from './types/types';
 
 interface CellPropsType {
   date: number;
