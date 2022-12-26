@@ -55,7 +55,7 @@ const Cell: React.FC<CellPropsType> = ({
         onClick={handleDateSelect}
         className={`flex justify-center items-center w-9 h-9 cursor-pointer 
         rounded-full text-gray-600 hover:bg-[#D80000] hover:text-white 
-        transition-all duration-250 ease-in-out
+        transition-all duration-250 ease-in-out outline-[#D80000]
 
         ${
           isHoliday && !isPreviousOrNext && !isSelectedDate
@@ -81,7 +81,8 @@ const Cell: React.FC<CellPropsType> = ({
         ${isSelectedDate && !isPreviousOrNext ? 'bg-[#d80000] text-white' : ''}
 
         `}
-        aria-disabled={isPreviousOrNext}>
+        aria-disabled={isPreviousOrNext}
+        disabled={isPreviousOrNext}>
         <p className='font-semibold text-base'>{date}</p>
       </button>
     </li>
