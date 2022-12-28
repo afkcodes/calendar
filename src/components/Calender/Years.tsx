@@ -1,6 +1,6 @@
 import React from 'react';
-import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
 import Button from '../Button';
+import { yearOffset } from './helper/helper.calender';
 
 interface YearsPropType {
   year: number;
@@ -15,11 +15,18 @@ const Years: React.FC<YearsPropType> = ({
   onYearClick,
   offset,
 }) => {
+  console.log(offset);
   const handleYearChange = (type: string) => {
     if (type === 'next') {
       setYear(year + 1);
     } else {
       setYear(year - 1);
+    }
+
+    if (type === 'next' && offset) {
+      setYear(year + yearOffset);
+    } else if (type === 'previous' && offset) {
+      setYear(year - yearOffset);
     }
   };
   return (
