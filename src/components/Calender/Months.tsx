@@ -1,6 +1,7 @@
 import React from 'react';
 import { months } from './helper/helper.calender';
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
+import Button from '../Button';
 
 interface MonthsPropType {
   month: number;
@@ -34,29 +35,17 @@ const Months: React.FC<MonthsPropType> = ({
   return (
     <div className='w-full flex flex-1 justify-between mb-1 mr-1'>
       <div className='w-full flex justify-between items-center rounded mb-1'>
-        <button
-          className='h-6 w-6 flex items-center justify-center
-          hover:bg-[#D80000] hover:text-white rounded-full 
-          cursor-pointer transition-all duration-200 ease-in-out
-          outline-[#D80000]'
-          tabIndex={0}
-          onClick={() => handleMonthChange('previous')}
-          name='previous month'
-          aria-label='previous month'>
-          <FiChevronLeft size={20} />
-        </button>
+        <Button
+          handleClick={() => handleMonthChange('previous')}
+          type='previous'
+          iconSize={20}
+        />
         <p className='font-semibold text-base text-gray-600'>{months[month]}</p>
-        <button
-          className='h-6 w-6 flex items-center justify-center
-          hover:bg-[#D80000] hover:text-white rounded-full 
-          cursor-pointer transition-all duration-200 ease-in-out
-           outline-[#D80000]'
-          tabIndex={0}
-          onClick={() => handleMonthChange('next')}
-          name='next month'
-          aria-label='next month'>
-          <FiChevronRight size={20} />
-        </button>
+        <Button
+          handleClick={() => handleMonthChange('next')}
+          type='next'
+          iconSize={20}
+        />
       </div>
     </div>
   );

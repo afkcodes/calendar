@@ -1,5 +1,6 @@
 import React from 'react';
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
+import Button from '../Button';
 
 interface YearsPropType {
   year: number;
@@ -17,29 +18,17 @@ const Years: React.FC<YearsPropType> = ({ year, setYear }) => {
   return (
     <section className='w-full flex flex-1 justify-between mb-1 ml-1'>
       <div className='w-full flex flex-1 justify-between items-center rounded mb-1 '>
-        <button
-          className='h-6 w-6 flex items-center justify-center
-          hover:bg-[#D80000] hover:text-white rounded-full 
-          cursor-pointer transition-all duration-200 ease-in-out
-          outline-[#D80000]'
-          tabIndex={0}
-          onClick={() => handleYearChange('previous')}
-          name='previous year'
-          aria-label='previous year'>
-          <FiChevronLeft size={20} />
-        </button>
+        <Button
+          handleClick={() => handleYearChange('previous')}
+          type='previous'
+          iconSize={20}
+        />
         <p className='font-semibold text-base text-gray-600'>{year}</p>
-        <button
-          className='h-6 w-6 flex items-center justify-center
-          hover:bg-[#D80000] hover:text-white rounded-full
-          cursor-pointer transition-all duration-200 ease-in-out
-          outline-[#D80000]'
-          tabIndex={0}
-          onClick={() => handleYearChange('next')}
-          name='next year'
-          aria-label='next year'>
-          <FiChevronRight size={20} />
-        </button>
+        <Button
+          handleClick={() => handleYearChange('next')}
+          type='next'
+          iconSize={20}
+        />
       </div>
     </section>
   );
