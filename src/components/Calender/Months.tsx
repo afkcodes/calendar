@@ -44,7 +44,7 @@ const Months: React.FC<MonthsPropType> = ({
         />
         <Button
           type='TEXT'
-          style='font-semibold text-base text-gray-600'
+          style='font-semibold text-base text-gray-600 px-2'
           handleClick={onMonthClick}
           text={months[month]}
         />

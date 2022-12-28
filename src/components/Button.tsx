@@ -13,6 +13,7 @@ interface ButtonProps {
   iconName?: string;
   text?: string | number;
   style?: string;
+  isDisabled?: boolean;
 }
 
 const buttonStyleMap: any = {
@@ -33,6 +34,7 @@ const Button: React.FC<ButtonProps> = ({
   iconName,
   text,
   style,
+  isDisabled,
 }) => {
   const icon = type == 'ICON' ? createIcon(iconName, iconSize) : undefined;
   return (
@@ -43,7 +45,9 @@ const Button: React.FC<ButtonProps> = ({
         `}
       onClick={handleClick}
       name={type}
-      aria-label={type}>
+      aria-label={type}
+      disabled={isDisabled}
+      aria-disabled={isDisabled}>
       {type === 'ICON' ? (
         <>{icon}</>
       ) : (

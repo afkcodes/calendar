@@ -15,7 +15,6 @@ const Years: React.FC<YearsPropType> = ({
   onYearClick,
   offset,
 }) => {
-  console.log(offset);
   const handleYearChange = (type: string) => {
     if (type === 'next') {
       setYear(year + 1);
@@ -41,7 +40,7 @@ const Years: React.FC<YearsPropType> = ({
         <Button
           text={offset ? `${year} - ${offset}` : year}
           type='TEXT'
-          style='font-semibold text-base text-gray-600'
+          style='font-semibold text-base text-gray-600 px-2'
           handleClick={onYearClick}
         />
         <Button
