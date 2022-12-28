@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../Button';
 import { getInitialCalenderDate } from './helper/helper.calender';
 import { DateType } from './types/types';
 
@@ -51,12 +52,12 @@ const Cell: React.FC<CellPropsType> = ({
 
   return (
     <li>
-      <button
-        onClick={handleDateSelect}
-        className={`flex justify-center items-center w-9 h-9 cursor-pointer 
+      <Button
+        type='TEXT'
+        handleClick={handleDateSelect}
+        style={`flex justify-center items-center w-9 h-9 cursor-pointer 
         rounded-full text-gray-600 hover:bg-[#D80000] hover:text-white 
-        transition-all duration-250 ease-in-out outline-[#D80000]
-
+      
         ${
           isHoliday && !isPreviousOrNext && !isSelectedDate
             ? 'bg-yellow-500 text-gray-700'
@@ -81,10 +82,9 @@ const Cell: React.FC<CellPropsType> = ({
         ${isSelectedDate && !isPreviousOrNext ? 'bg-[#d80000] text-white' : ''}
 
         `}
-        aria-disabled={isPreviousOrNext}
-        disabled={isPreviousOrNext}>
-        <p className='font-semibold text-base'>{date}</p>
-      </button>
+        isDisabled={isPreviousOrNext}
+        text={date}
+      />
     </li>
   );
 };
