@@ -6,25 +6,49 @@ const buttonIconMap: any = {
   previous: FiChevronLeft,
 };
 
-interface IconButtonProps {
-  type: string;
+interface ButtonProps {
+  type: 'ICON' | 'TEXT';
   handleClick: () => void;
-  iconSize: number;
+  iconSize?: number;
+  iconName?: string;
+  text?: string | number;
+  style?: string;
 }
 
-const Button: React.FC<IconButtonProps> = ({ handleClick, type, iconSize }) => {
-  const icon = React.createElement(buttonIconMap[type], { size: iconSize });
+const buttonStyleMap: any = {
+  ICON: `flex items-center justify-center
+          hover:bg-[#D80000] hover:text-white rounded-full`,
+};
+
+const createIcon = (iconName?: string, iconSize?: number) => {
+  return React.createElement(buttonIconMap[iconName as any], {
+    size: iconSize,
+  });
+};
+
+const Button: React.FC<ButtonProps> = ({
+  handleClick,
+  type,
+  iconSize,
+  iconName,
+  text,
+  style,
+}) => {
+  const icon = type == 'ICON' ? createIcon(iconName, iconSize) : undefined;
   return (
     <button
-      className='h-6 w-6 flex items-center justify-center
-          hover:bg-[#D80000] hover:text-white rounded-full 
-          cursor-pointer transition-all duration-200 ease-in-out
-          outline-[#D80000]'
-      tabIndex={0}
+      className={`
+        cursor-pointer transition-all duration-200 ease-in-out outline-[#D80000]
+        ${style ? style : buttonStyleMap[type]}
+        `}
       onClick={handleClick}
-      name='previous month'
-      aria-label='previous month'>
-      <>{icon}</>
+      name={type}
+      aria-label={type}>
+      {type === 'ICON' ? (
+        <>{icon}</>
+      ) : (
+        <p className='font-semibold text-base'>{text}</p>
+      )}
     </button>
   );
 };
