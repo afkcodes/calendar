@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import {
-  getInitialCalenderDate,
-  yearWithOffset,
-} from './helper/helper.calender';
+import { getInitialCalenderDate, yearOffset } from './helper/helper.calender';
 import Dates from './Dates';
 import Months from './Months';
 import { DateType } from './types/types';
@@ -25,7 +22,7 @@ const Calender: React.FC<CalenderPropsType> = ({
   const [showMonthList, setShowMonthList] = useState(false);
   const [showYearList, setShowYearList] = useState(false);
 
-  const offsetYear = yearWithOffset + year - 1;
+  const offsetYear = yearOffset + year - 1;
 
   return (
     <div className='flex flex-col w-96 h-80 '>
