@@ -1,13 +1,13 @@
 import React from 'react';
-import { months } from './helper/helper.calender';
-import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
 import Button from '../Button';
+import { months } from './helper/helper.calender';
 
 interface MonthsPropType {
   month: number;
   year: number;
   setMonth: Function;
   setYear: Function;
+  onMonthClick: () => void;
 }
 
 const Months: React.FC<MonthsPropType> = ({
@@ -15,6 +15,7 @@ const Months: React.FC<MonthsPropType> = ({
   year,
   setMonth,
   setYear,
+  onMonthClick,
 }) => {
   const handleMonthChange = (type: string) => {
     if (type === 'next') {
@@ -36,14 +37,21 @@ const Months: React.FC<MonthsPropType> = ({
     <div className='w-full flex flex-1 justify-between mb-1 mr-1'>
       <div className='w-full flex justify-between items-center rounded mb-1'>
         <Button
+          type='ICON'
           handleClick={() => handleMonthChange('previous')}
-          type='previous'
+          iconName='previous'
           iconSize={20}
         />
-        <p className='font-semibold text-base text-gray-600'>{months[month]}</p>
         <Button
+          type='TEXT'
+          style='font-semibold text-base text-gray-600'
+          handleClick={onMonthClick}
+          text={months[month]}
+        />
+        <Button
+          type='ICON'
           handleClick={() => handleMonthChange('next')}
-          type='next'
+          iconName='next'
           iconSize={20}
         />
       </div>

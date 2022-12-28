@@ -5,9 +5,16 @@ import Button from '../Button';
 interface YearsPropType {
   year: number;
   setYear: Function;
+  onYearClick: () => void;
+  offset?: number;
 }
 
-const Years: React.FC<YearsPropType> = ({ year, setYear }) => {
+const Years: React.FC<YearsPropType> = ({
+  year,
+  setYear,
+  onYearClick,
+  offset,
+}) => {
   const handleYearChange = (type: string) => {
     if (type === 'next') {
       setYear(year + 1);
@@ -16,17 +23,24 @@ const Years: React.FC<YearsPropType> = ({ year, setYear }) => {
     }
   };
   return (
-    <section className='w-full flex flex-1 justify-between mb-1 ml-1'>
+    <section className='w-full flex flex-1 justify-between mb-1'>
       <div className='w-full flex flex-1 justify-between items-center rounded mb-1 '>
         <Button
+          type='ICON'
           handleClick={() => handleYearChange('previous')}
-          type='previous'
+          iconName='previous'
           iconSize={20}
         />
-        <p className='font-semibold text-base text-gray-600'>{year}</p>
         <Button
+          text={offset ? `${year} - ${offset}` : year}
+          type='TEXT'
+          style='font-semibold text-base text-gray-600'
+          handleClick={onYearClick}
+        />
+        <Button
+          type='ICON'
           handleClick={() => handleYearChange('next')}
-          type='next'
+          iconName='next'
           iconSize={20}
         />
       </div>

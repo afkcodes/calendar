@@ -17,6 +17,8 @@ export const months: any = {
   12: 'DECEMBER',
 };
 
+export let yearWithOffset = 20;
+
 const getActualMonth = (month: number) => month - 1;
 const getRealizedMonth = (month: number) => month + 1;
 
@@ -25,6 +27,19 @@ const getFirstDay = (month: number, year: number) =>
 
 const getLastDay = (month: number, year: number, date: number) =>
   new Date(year, getActualMonth(month), date).getDay();
+
+export const createYearList = (
+  year: number,
+  offset: number = yearWithOffset
+) => {
+  const yearList = [];
+  const actualOffset = year + offset;
+  console.log(yearWithOffset);
+  for (let i = year; i < actualOffset; i++) {
+    yearList.push(i);
+  }
+  return yearList;
+};
 
 export const getInitialCalenderDate = () => {
   const date = new Date().getDate();
