@@ -90,7 +90,7 @@ const createPreviousDates = (month: number, year: number) => {
 
 const createNextDates = (month: number, year: number) => {
   const actualYear = month === 12 ? year + 1 : year;
-  const actualMonth = month === 12 ? 1 : month;
+  const actualMonth = month === 12 ? 1 : month + 1;
   const dates = createDates(actualMonth, actualYear, 'next');
   return dates;
 };
